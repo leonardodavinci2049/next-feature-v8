@@ -15,8 +15,13 @@ const seedProducts = async () => {
   }
 };
 
-// Run seed if needed
-seedProducts();
+console.log("Seeding products...");
+
+// Remove this line - it was causing seedProducts to run on every import
+// seedProducts();
+
+// Export seedProducts if you want to call it manually elsewhere
+export { seedProducts };
 
 export async function getProducts(query?: string) {
   await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -43,7 +48,7 @@ export async function getProduct(id: number) {
 export async function addProduct(
   title: string,
   price: number,
-  description: string
+  description: string,
 ) {
   await new Promise((resolve) => setTimeout(resolve, 1500));
   return prisma.product.create({
@@ -55,7 +60,7 @@ export async function updateProduct(
   id: number,
   title: string,
   price: number,
-  description: string
+  description: string,
 ) {
   await new Promise((resolve) => setTimeout(resolve, 1500));
   return prisma.product.update({
