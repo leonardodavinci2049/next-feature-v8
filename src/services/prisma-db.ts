@@ -25,6 +25,10 @@ export { seedProducts };
 
 export async function getProducts(query?: string) {
   await new Promise((resolve) => setTimeout(resolve, 1500));
+
+
+
+  
   if (query) {
     return prisma.product.findMany({
       where: {
