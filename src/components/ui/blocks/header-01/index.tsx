@@ -17,7 +17,7 @@ const TopMenu = [
   { name: "Dashboard", href: "/dashboard" },
   { name: "users-client", href: "/users-client" },
   { name: "users-server", href: "/users-server" },
-  { name: "Sobre Nós", href: "/about" },
+  { name: "posts-sequential", href: "/posts-sequential" },
   { name: "Product Reviews", href: "/product-reviews" },
 ];
 
