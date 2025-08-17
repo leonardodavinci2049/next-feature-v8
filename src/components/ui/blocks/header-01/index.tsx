@@ -18,7 +18,7 @@ const TopMenu = [
   { name: "users-client", href: "/users-client" },
   { name: "users-server", href: "/users-server" },
   { name: "posts-sequential", href: "/posts-sequential" },
-  { name: "Product Reviews", href: "/product-reviews" },
+  { name: "user-parallel", href: "/user-parallel" },
 ];
 
 export default function Header01() {
