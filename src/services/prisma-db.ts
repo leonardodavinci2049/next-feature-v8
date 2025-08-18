@@ -3,8 +3,7 @@ import { PrismaClient } from "@/generated/prisma";
 const prisma = new PrismaClient();
 
 const seedProducts = async () => {
-  const count = await prisma.product.count();
-  if (count === 0) {
+
     await prisma.product.createMany({
       data: [
         { title: "Product 1", price: 500, description: "Description 1" },
@@ -12,7 +11,7 @@ const seedProducts = async () => {
         { title: "Product 3", price: 1000, description: "Description 3" },
       ],
     });
-  }
+ 
 };
 
 console.log("Seeding products...");
@@ -26,9 +25,14 @@ export { seedProducts };
 export async function getProducts(query?: string) {
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
-
-
+  const count = await prisma.product.count();
   
+  if (count === 0) {
+    await seedProducts();
+    console.log("Products seeded successfully.");
+   }
+
+   
   if (query) {
     return prisma.product.findMany({
       where: {
