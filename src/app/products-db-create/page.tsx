@@ -3,6 +3,8 @@
 import { FormState, createProduct } from "@/actions/products";
 import { Submit } from "@/components/submit";
 import { useActionState } from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function AddProductPage() {
   const initialState: FormState = {
@@ -12,53 +14,70 @@ export default function AddProductPage() {
   const [state, formAction] = useActionState(createProduct, initialState);
 
   return (
-    <form action={formAction} className="p-4 space-y-4 max-w-96">
-      <div>
-        <label className="text-white">
-          Title
-          <input
+    <div className="mx-auto max-w-md">
+      <div className="mb-8">
+        <h1 className="text-foreground mb-2 text-2xl font-bold">
+          Adicionar Produto
+        </h1>
+        <p className="text-muted-foreground">
+          Preencha os dados para adicionar um novo produto ao banco de dados
+        </p>
+      </div>
+
+      <form action={formAction} className="space-y-6">
+        <div className="space-y-2">
+          <Label htmlFor="title">Título</Label>
+          <Input
+            id="title"
             type="text"
-            className="block w-full p-2 text-black border rounded"
             name="title"
+            placeholder="Digite o título do produto"
+            aria-invalid={!!state.errors.title}
           />
-        </label>
-        {state.errors.title && (
-          <p className="text-red-500">{state.errors.title}</p>
-        )}
-      </div>
-      <div>
-        <label className="text-white">
-          Price
-          <input
+          {state.errors.title && (
+            <p className="text-destructive text-sm font-medium">
+              {state.errors.title}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="price">Preço</Label>
+          <Input
+            id="price"
             type="number"
-            className="block w-full p-2 text-black border rounded"
             name="price"
+            placeholder="0.00"
+            step="0.01"
+            min="0"
+            aria-invalid={!!state.errors.price}
           />
-        </label>
-        {state.errors.price && (
-          <p className="text-red-500">{state.errors.price}</p>
-        )}
-      </div>
-      <div>
-        <label className="text-white">
-          Description
+          {state.errors.price && (
+            <p className="text-destructive text-sm font-medium">
+              {state.errors.price}
+            </p>
+          )}
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="description">Descrição</Label>
           <textarea
-            className="block w-full p-2 text-black border rounded"
+            id="description"
             name="description"
+            placeholder="Digite a descrição do produto"
+            rows={4}
+            className="border-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 dark:bg-input/30 resize-vertical aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex w-full min-w-0 rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+            aria-invalid={!!state.errors.description}
           />
-        </label>
-        {state.errors.description && (
-          <p className="text-red-500">{state.errors.description}</p>
-        )}
-      </div>
-      {/* <button
-        type="submit"
-        className="block w-full p-2 text-white bg-blue-500 rounded disabled:bg-gray-500"
-        disabled={isPending}
-      >
-        Submit
-      </button> */}
-      <Submit />
-    </form>
+          {state.errors.description && (
+            <p className="text-destructive text-sm font-medium">
+              {state.errors.description}
+            </p>
+          )}
+        </div>
+
+        <Submit />
+      </form>
+    </div>
   );
 }

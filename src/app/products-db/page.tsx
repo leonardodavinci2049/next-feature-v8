@@ -18,7 +18,7 @@ export default async function ProductsDBPage({
   return(
     <div>
       <div className="flex justify-between items-end p-4">
-        <Link href="/react-form">
+        <Link href="/products-db-create">
           <Button variant="destructive">Create Product</Button>
         </Link>
       </div>
