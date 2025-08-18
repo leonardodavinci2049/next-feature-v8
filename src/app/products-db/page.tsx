@@ -1,11 +1,13 @@
-
 import { getProducts } from "@/services/prisma-db";
 import { ProductDetail } from "./product-detail";
 import { Product } from "./types/product.type";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 
 
-export default async function ProductsPrismaDBPage({
+
+export default async function ProductsDBPage({
   searchParams,
 }: {
   searchParams: Promise<{ query?: string }>;
@@ -13,5 +15,17 @@ export default async function ProductsPrismaDBPage({
   const { query } = await searchParams;
   const products: Product[] = await getProducts(query);
 
-  return <ProductDetail products={products} />;
+  return(
+    <div>
+      <div className="flex justify-between items-end p-4">
+        <Link href="/react-form">
+          <Button variant="destructive">Create Product</Button>
+        </Link>
+      </div>
+      <ProductDetail products={products} />;
+
+    </div>
+  )
+  
 }
+

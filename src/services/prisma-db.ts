@@ -6,15 +6,15 @@ const seedProducts = async () => {
 
     await prisma.product.createMany({
       data: [
-        { title: "Product 1", price: 500, description: "Description 1" },
-        { title: "Product 2", price: 700, description: "Description 2" },
-        { title: "Product 3", price: 1000, description: "Description 3" },
+        { title: "Product 1", price: 500, description: "Description 1xxx" },
+        { title: "Product 2", price: 700, description: "Description 2yyy" },
+        { title: "Product 3", price: 1000, description: "Description 3zzz" },
       ],
     });
  
 };
 
-console.log("Seeding products...");
+
 
 // Remove this line - it was causing seedProducts to run on every import
 // seedProducts();
