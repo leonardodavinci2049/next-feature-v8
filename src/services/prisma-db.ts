@@ -3,18 +3,14 @@ import { PrismaClient } from "@/generated/prisma";
 const prisma = new PrismaClient();
 
 const seedProducts = async () => {
-
-    await prisma.product.createMany({
-      data: [
-        { title: "Product 1", price: 500, description: "Description 1xxx" },
-        { title: "Product 2", price: 700, description: "Description 2yyy" },
-        { title: "Product 3", price: 1000, description: "Description 3zzz" },
-      ],
-    });
- 
+  await prisma.product.createMany({
+    data: [
+      { title: "Product 1", price: 500, description: "Description 1xxx" },
+      { title: "Product 2", price: 700, description: "Description 2yyy" },
+      { title: "Product 3", price: 1000, description: "Description 3zzz" },
+    ],
+  });
 };
-
-
 
 // Remove this line - it was causing seedProducts to run on every import
 // seedProducts();
@@ -26,13 +22,12 @@ export async function getProducts(query?: string) {
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
   const count = await prisma.product.count();
-  
+
   if (count === 0) {
     await seedProducts();
-    console.log("Products seeded successfully.");
-   }
+    // console.log("Products seeded successfully.");
+  }
 
-   
   if (query) {
     return prisma.product.findMany({
       where: {
