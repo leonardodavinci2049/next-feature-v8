@@ -38,6 +38,8 @@ export default async function Page({
   const albumsData = getUserAlbums(userId);
 
   const [posts, albums] = await Promise.all([postsData, albumsData]);
+
+  
   return (
     <div className="p-4 max-w-7xl mx-auto">
       <h1 className="text-3xl font-extrabold mb-8">User Profile</h1>
