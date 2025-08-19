@@ -3,6 +3,7 @@ import { ProductDetail } from "./product-detail";
 import { Product } from "./types/product.type";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Search from "@/components/search";
 
 
 
@@ -18,6 +19,7 @@ export default async function ProductsDBPage({
   return(
     <div>
       <div className="flex justify-between items-end p-4">
+         <Search />
         <Link href="/products-db-create">
           <Button variant="destructive">Create Product</Button>
         </Link>
