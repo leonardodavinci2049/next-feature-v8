@@ -17,7 +17,7 @@ export const ProductDetail = ({ products }: { products: Product[] }) => {
     products,
     (currentProducts, productId) => {
       return currentProducts.filter((product) => product.id !== productId);
-    }
+    },
   );
 
   const removeProductById = async (productId: number) => {
@@ -30,21 +30,29 @@ export const ProductDetail = ({ products }: { products: Product[] }) => {
       {optimisticProducts.map((product) => (
         <li
           key={product.id}
-          className="p-4 bg-white shadow-md rounded-lg text-gray-700"
+          className="rounded-lg bg-white p-4 text-gray-700 shadow-md"
         >
           <h2 className="text-xl font-semibold">
             <Link href={`/products-db/${product.id}`}>{product.title}</Link>
           </h2>
           <p>{product.description}</p>
           <p className="text-lg font-medium">${product.price}</p>
-          <Form action={removeProductById.bind(null, product.id)}>
-            <button
-              type="submit"
-              className="px-4 py-2 mt-4 text-white bg-red-500 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-600"
+          <div className="mt-4 flex justify-between">
+            <Link
+              href={`/products-db/${product.id}`}
+              className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:ring-2 focus:ring-blue-600 focus:outline-none"
             >
-              Delete
-            </button>
-          </Form>
+              Edit
+            </Link>
+            <Form action={removeProductById.bind(null, product.id)}>
+              <button
+                type="submit"
+                className="rounded-md bg-red-500 px-4 py-2 text-white hover:bg-red-600 focus:ring-2 focus:ring-red-600 focus:outline-none"
+              >
+                Delete
+              </button>
+            </Form>
+          </div>
         </li>
       ))}
     </ul>
