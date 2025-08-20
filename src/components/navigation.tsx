@@ -21,6 +21,9 @@ export const Navigation = () => {
           <div>
             <Link href="/dashboard">Dashboard</Link>
           </div>
+          <div>
+            <Link href="/admin">admin</Link>
+          </div>
           <div className="flex items-center gap-4">
             <SignedOut>
               <SignInButton>
@@ -36,6 +39,7 @@ export const Navigation = () => {
             </SignedOut>
             <SignedIn>
               <Link href="/user-profile">Profile</Link>
+              
               <SignOutButton />
               {/* <UserButton /> */}
             </SignedIn>
