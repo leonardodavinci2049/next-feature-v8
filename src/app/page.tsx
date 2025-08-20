@@ -2,11 +2,12 @@ import { Suspense } from "react";
 
 import { Button } from "@/components/ui/button";
 import ModeToggle from "@/components/ui/blocks/header-01/mode-toggle";
+import { Counter } from "@/components/counter";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-black text-black dark:text-white transition-all duration-300">
-      <div className="max-w-3xl text-center space-y-10">
+    <div className="flex min-h-screen items-center justify-center bg-white text-black transition-all duration-300 dark:bg-black dark:text-white">
+      <div className="max-w-3xl space-y-10 text-center">
         <h1 className="text-6xl font-semibold">Next.js Dark Mode Tutorial</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt ad
@@ -22,6 +23,9 @@ export default function HomePage() {
           <Suspense>
             <ModeToggle />
           </Suspense>
+        </div>
+        <div className="" >
+          <Counter />
         </div>
       </div>
     </div>
